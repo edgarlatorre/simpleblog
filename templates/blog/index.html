@@ -1,0 +1,15 @@
+<html>
+<body>
+
+<h1>Meu blog</h1>
+
+{% for post in posts %}
+<h2>{{ post.title }}</h2>
+
+{{ post.body|safe }}
+<hr>
+{% endfor %}
+
+</body>
+</html>
+

@@ -34,6 +34,8 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
+TEMPLATE_CONTEXT_PROCESSORS = ("django.core.context_processors.media")
+
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
@@ -42,7 +44,7 @@ MEDIA_ROOT = os.path.join(SITE_ROOT, 'media')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.

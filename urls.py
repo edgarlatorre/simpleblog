@@ -8,6 +8,8 @@ from blog.models import Post
 
 urlpatterns = patterns('',
     (r'^js/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media/js'}),
+    (r'^css/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media/css'}),
+    (r'^images/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media/images'}),
     # Example:
     # (r'^simpleblog/', include('simpleblog.foo.urls')),
 

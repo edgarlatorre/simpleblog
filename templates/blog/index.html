@@ -1,15 +1,17 @@
-<html>
-<body>
-
-<h1>Meu blog</h1>
+{% include "header.html" %}
+<center>
+{% block body %}
 
 {% for post in posts %}
 <h2>{{ post.title }}</h2>
+<font size="1" face="Verdana">Publicado em {{ post.published|date:"d\/m\/Y" }}</font>
+<br \><br \>
 
 {{ post.body|safe }}
 <hr>
 {% endfor %}
-
+{% endblock %}
+</center>
 </body>
 </html>
 

@@ -1,0 +1,11 @@
+{% include "header.html" %}
+<center>
+{% if post %}
+        <h1> {{ post.title }} </h1>
+        {{ post.body|safe }}
+{% else %}
+        <h1>Nao existe</h1>
+{% endif %}
+</center>
+</body>
+</html>

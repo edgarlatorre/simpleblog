@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from django.conf import settings
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -8,8 +9,8 @@ from blog.models import Post, Link
 
 urlpatterns = patterns('',
     (r'^js/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media/js'}),
-    (r'^css/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media/css'}),
-    (r'^images/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media/images'}),
+    (r'^media/(.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    
     # Example:
     # (r'^simpleblog/', include('simpleblog.foo.urls')),
 

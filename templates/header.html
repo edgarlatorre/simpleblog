@@ -14,7 +14,9 @@
   <meta name="audience" content="all" />
   <meta name="AUTHOR" content="http://www.edgarlatorre.net" />
   <meta name="Generator" content="Site oficial de Edgar Latorre - www.edgarlatorre.net" />
-  <link href="/css/mainstyle.css" rel="stylesheet" type="text/css" />
+  {% block media %}
+  <link href="{{ MEDIA_URL }}css/mainstyle.css" rel="stylesheet" type="text/css" />
+  {% endblock %}
 </head>
 <body>
   <center>

@@ -1,5 +1,5 @@
 {% include "header.html" %}
-<center>
+
 {% block body %}
 
 {% for post in posts %}
@@ -15,7 +15,5 @@
   Não existe nenhum post.
 {% endfor %}
 {% endblock %}
-</center>
-</body>
-</html>
+{% include "footer.html" %}
 

@@ -1,8 +1,28 @@
 {% include "header.html" %}
+{% load comments %}
 <center>
 {% if post %}
         <h1> {{ post.title }} </h1>
         {{ post.body|safe }}
+        <center><hr></center>
+        <div class="comments">
+          {% get_comment_list for post as comments %}
+          {% if comments %}
+            <center>
+              <h3>Comentários</h3>
+            </center>
+           {% endif %}
+          {% for comment in comments %}
+            <div class="comment">
+              Nome: {{ comment.name }}
+              {% if comment.url %}URL: {{ comment.url }}{% endif %}<br/>
+              {{ comment.comment|linebreaks }}
+              <hr>
+            </div>
+          {% endfor %}
+          <h3>Deixe um comentário</h3>
+          {% render_comment_form for post %}
+        </div>
 {% else %}
         <h1>Nao existe</h1>
 {% endif %}

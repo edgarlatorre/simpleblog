@@ -7,7 +7,7 @@ class Post(models.Model) :
     title = models.CharField(max_length=100)
     body = models.TextField()
     published = models.DateTimeField()
-    slug = models.SlugField(max_length=100, blank=True)
+    slug = models.SlugField(max_length=100, blank=True, unique=True)
     
     def __str__(self) :
         return self.title
@@ -24,6 +24,15 @@ class Link(models.Model) :
         return self.url
         
 def post_pre_save(signal, instance, sender, **kwargs) :
-    instance.slug = slugify(instance.title)
+    if not instance.slug :
+        slug = slugify(instance.title)
+        new_slug = slug
+        count = 0
+        
+        while Post.objects.filter(slug=new_slug).exclude(id=instance.id).count() > 0 :
+            count += 1
+            new_slug = '%s-%d' % (slug, count)
+            
+        instance.slug = new_slug
     
 signals.pre_save.connect(post_pre_save, sender=Post) 

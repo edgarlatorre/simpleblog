@@ -22,5 +22,6 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^$', 'blog.views.post_index'),
     url(r'^post/(?P<slug>[\w_-]+)/$', 'blog.views.post_show', name='post-show'),
+    url(r'^comments/', include('django.contrib.comments.urls')),
     url(r'^links', 'blog.views.link_index', name='link-index'),
 )

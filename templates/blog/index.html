@@ -7,7 +7,7 @@
 <font size="1" face="Verdana">Publicado em {{ post.published|date:"d\/m\/Y" }}</font>
 <br \><br \>
 {{ post.body|truncatewords:"30"|safe }}
-<a href="{% url post-show post.id %}">
+<a href="{{ post.get_absolute_url }}">
 <font size="1" face="Verdana">ler mais</font>
 </a>
 <hr>

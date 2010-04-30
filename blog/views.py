@@ -7,8 +7,8 @@ def post_index(request) :
     
     return render_to_response('blog/index.html', {'posts':posts}, context_instance = RequestContext(request))
         
-def post_show(request, post_id) :
-    post = Post.objects.get(id=post_id)
+def post_show(request, slug) :
+    post = Post.objects.get(slug=slug)
     return render_to_response('blog/show.html', {'post':post}, context_instance = RequestContext(request))
         
 def link_index(request) :

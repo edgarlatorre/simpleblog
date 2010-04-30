@@ -21,3 +21,6 @@ Another way to test that 1 + 1 is equal to 2.
 True
 """}
 
+class PostTest(TestCase) :
+    def test_one(self) :
+	self.failUnlessEqual('Erro aqui',1, 2)

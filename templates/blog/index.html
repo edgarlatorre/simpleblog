@@ -1,19 +1,24 @@
 {% include "header.html" %}
-
-{% block body %}
-
-{% for post in posts %}
-<h2>{{ post.title }}</h2>
-<font size="1" face="Verdana">Publicado em {{ post.published|date:"d\/m\/Y" }}</font>
-<br \><br \>
-{{ post.body|truncatewords:"30"|safe }}
-<a href="{{ post.get_absolute_url }}">
-<font size="1" face="Verdana">ler mais</font>
-</a>
-<hr>
-{% empty %}
-  Não existe nenhum post.
-{% endfor %}
-{% endblock %}
+<!-- start content -->
+<div id="content">
+        {% load comments %}
+        {% for post in posts %}
+                {% get_comment_count for post as comment_count %}
+        <div class="post">
+                <h1 class="title"><a href="post/{{ post.slug }}">{{ post.title }}</a></h1>
+				<font size="1" face="Verdana">Publicado em {{ post.published|date:"d\/m\/Y" }}</font>
+                <div class="entry">
+                        {{ post.body|truncatewords:"30"|safe }}
+                </div>
+                <div class="meta">
+                        <p class="links"><a href="{{ post.get_absolute_url }}" class="more">Read full article</a> <b>|</b> <a href="post/{{ post.slug }}" class="comments">Comments({{ comment_count }})</a></p>
+                </div>
+        </div>
+        {% empty %}
+          Não existe nenhum post.
+        {% endfor %}
+</div>
+<!-- end content -->
+{% include "side_bar.html" %}
 {% include "footer.html" %}
 
